@@ -16,19 +16,31 @@ function setGame(game) {
   gameDisplay.innerHTML = "";
   switch (game) {
     case "blackjack":
-      gameDisplay.innerHTML = game;
+      gameDisplay.innerHTML = `
+        <button id="startBlackJack" class="play-game">Start Game</button>
+          `;
       break;
     case "plinko":
-      gameDisplay.innerHTML = game;
+      `
+        <button id="startPlinko" class="play-game">Start Game</button>
+          `;
       break;
     case "war":
-      gameDisplay.innerHTML = game;
+      `
+        <button id="startWar" class="play-game">Start Game</button>
+          `;
       break;
     default:
       gameDisplay.innerHTML = `
         <h1 class="default">Please choose a game to begin</h1>      
           `;
   }
+  const startGameBtn = gameDisplay.querySelector(".play-game");
+  startGameBtn.addEventListener("click", () => {
+    const game = startGameBtn.id;
+
+    // startGameBtn(game);
+  });
 }
 
 createPlayNow();

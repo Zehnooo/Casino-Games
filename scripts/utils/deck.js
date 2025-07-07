@@ -41,4 +41,24 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-export { createDeck, shuffleDeck };
+function dealGame(game, deck) {
+  /* BlackJack dealing
+    dealer deals starting with the player
+    one card face up to player
+    one card face down to dealer
+    one card face up to player
+    one card face up to dealer
+    */
+  if (game === "blackjack") {
+    playerHand = [];
+    dealerHand = [];
+    for (i = 0; i < 2; i++) {
+      const firstDraw = deck.pop();
+      playerHand.push(firstDraw);
+      const secondDraw = deck.pop();
+      dealerHand.push(secondDraw);
+    }
+  }
+}
+
+export { createDeck, dealGame };
