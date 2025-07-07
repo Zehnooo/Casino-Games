@@ -1,6 +1,6 @@
 function createPlayNow() {
   const gameSelection = document.querySelector(".select-game");
-  const games = gameSelection.querySelectorAll("div");
+  const games = gameSelection.querySelectorAll(".game");
   for (const game of games) {
     const playNowBtn = document.createElement("button");
     playNowBtn.textContent = "PLAY NOW";
