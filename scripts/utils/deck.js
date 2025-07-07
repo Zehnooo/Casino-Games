@@ -1,0 +1,6 @@
+/*
+create deck
+shuffle deck
+drawCard
+etc
+*/

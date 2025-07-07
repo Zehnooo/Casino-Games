@@ -1,0 +1,7 @@
+/*
+Generic helper functions
+get random number
+play sound files
+format currency
+etc
+*/
