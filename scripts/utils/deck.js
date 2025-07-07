@@ -59,6 +59,7 @@ function dealGame(game, deck) {
       dealerHand.push(secondDraw);
     }
   }
+  return playerHand, dealerHand, deck;
 }
 
 export { createDeck, dealGame };
