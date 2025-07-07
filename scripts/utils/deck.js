@@ -28,7 +28,12 @@ function createDeck() {
 
   for (let suit of suits) {
     for (let value of values) {
-      deck.push({ suit: suit, value: value });
+      let imageName = `${value.toLowerCase()}_of_${suit.toLowerCase()}.png`;
+      deck.push({
+        suit: suit,
+        value: value,
+        image: `assets/cards/${imageName}`,
+      });
     }
   }
   shuffleDeck(deck);
