@@ -12,9 +12,8 @@ function createPlayNow() {
 }
 
 function setGame(game) {
-  const gameDisplay = document.querySelector("#game-container");
+  const gameDisplay = document.querySelector("#display-game");
   gameDisplay.innerHTML = "";
-
   switch (game) {
     case "blackjack":
       gameDisplay.innerHTML = game;
@@ -26,8 +25,15 @@ function setGame(game) {
       gameDisplay.innerHTML = game;
       break;
     default:
-      console.log("no game chosen yet");
+      gameDisplay.innerHTML = `
+        <h1 class="default">Please choose a game to begin</h1>      
+          `;
   }
 }
 
 createPlayNow();
+
+import { createDeck } from "./utils/deck.js";
+
+let deck = createDeck();
+console.log("New Deck", deck);
