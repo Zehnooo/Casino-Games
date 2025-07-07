@@ -4,6 +4,8 @@ shuffle deck
 drawCard
 etc
 */
+let playerHand = [];
+let dealerHand = [];
 
 function createDeck() {
   let deck = [];
@@ -50,16 +52,15 @@ function dealGame(game, deck) {
     one card face up to dealer
     */
   if (game === "blackjack") {
-    playerHand = [];
-    dealerHand = [];
+    let i;
     for (i = 0; i < 2; i++) {
       const firstDraw = deck.pop();
       playerHand.push(firstDraw);
       const secondDraw = deck.pop();
       dealerHand.push(secondDraw);
     }
+    return { playerHand, dealerHand, deck };
   }
-  return playerHand, dealerHand, deck;
 }
 
 export { createDeck, dealGame };

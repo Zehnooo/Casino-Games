@@ -1,4 +1,4 @@
-import { createDeck, dealGame } from "./utils/deck.js";
+import { createDeck, dealGame } from "./deck.js";
 
 /*
 Generic helper functions
@@ -12,9 +12,14 @@ function startGame(game) {
   if (game === "startBlackJack") {
     game = "blackjack";
     const deck = createDeck();
-    dealGame(game, deck);
-    console.log("blackjack game started");
+    const blackJackGame = dealGame(game, deck);
+
+    console.log("blackjack game started", blackJackGame.deck);
+    console.log(blackJackGame.playerHand);
+    console.log(blackJackGame.dealerHand);
   } else {
     console.log("HERRO");
   }
 }
+
+export { startGame };

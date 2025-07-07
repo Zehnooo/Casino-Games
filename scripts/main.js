@@ -21,31 +21,31 @@ function setGame(game) {
           `;
       break;
     case "plinko":
-      `
+      gameDisplay.innerHTML = `
         <button id="startPlinko" class="play-game">Start Game</button>
           `;
       break;
     case "war":
-      `
+      gameDisplay.innerHTML = `
         <button id="startWar" class="play-game">Start Game</button>
           `;
+
       break;
     default:
       gameDisplay.innerHTML = `
         <h1 class="default">Please choose a game to begin</h1>      
           `;
   }
-  const startGameBtn = gameDisplay.querySelector(".play-game");
-  startGameBtn.addEventListener("click", () => {
-    const game = startGameBtn.id;
+  let startGameBtn = gameDisplay.querySelector(".play-game");
 
+  startGameBtn.addEventListener("click", () => {
+    console.log(startGameBtn.id);
+    const game = startGameBtn.id;
+    startGame(game);
     // startGameBtn(game);
   });
 }
 
 createPlayNow();
 
-import { createDeck } from "./utils/deck.js";
-
-let deck = createDeck();
-console.log("New Deck", deck);
+import { startGame } from "./utils/helpers.js";
