@@ -1,5 +1,5 @@
 import { createButton, createCardElement } from "./utils/domHelpers.js";
-import { drawCard } from "./utils/deck.js";
+import { drawCard /*, getHandValue */ } from "./utils/deck.js";
 
 function buildBlackjackUI(container, gameState) {
   const header = document.createElement("h2");
@@ -50,6 +50,10 @@ function buildBlackjackUI(container, gameState) {
     playerHand.appendChild(cardImg);
   });
   const standBtn = createButton("stand", "Stand");
+  standBtn.addEventListener("click", () => {
+    const faceDownCard = dealerHand.querySelector(".flipped");
+    faceDownCard.classList.remove("flipped");
+  });
 
   playerArea.prepend(playerTag);
   dealerArea.prepend(dealerTag);

@@ -49,13 +49,6 @@ function shuffleDeck(deck) {
 }
 
 function dealGame(game, deck) {
-  /* BlackJack dealing
-    dealer deals starting with the player
-    one card face up to player
-    one card face down to dealer
-    one card face up to player
-    one card face up to dealer
-    */
   if (game === "blackjack") {
     let i;
     for (i = 0; i < 2; i++) {
@@ -76,4 +69,23 @@ function drawCard(gameState, targetHand) {
   return gameState;
 }
 
-export { createDeck, dealGame, drawCard };
+/*
+function getHandValue(gameState) {
+  let playerValue = 0;
+  let dealerValue = 0;
+
+  for (let i = 0; i < gameState.playerHand.length; i++) {
+    playerValue += gameState.playerHand[i].value;
+  }
+
+  for (let i = 0; i < gameState.dealerHand.length; i++) {
+    dealerValue += gameState.dealerHand[i].value;
+  }
+
+  console.log(playerValue);
+  console.log(dealerValue);
+
+  return gameState;
+}
+*/
+export { createDeck, dealGame, drawCard /*, getHandValue */ };
