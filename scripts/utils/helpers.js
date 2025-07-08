@@ -15,7 +15,7 @@ function startGame(game) {
     const deck = createDeck();
     const blackJackGame = dealGame(game, deck);
     gameDisplay.innerHTML = `
-    INSERT EPIC BLACKJACK GAME
+    <h1>INSERT EPIC BLACKJACK GAME</h1>
       `;
     console.log("blackjack game started", blackJackGame.deck);
     console.log(blackJackGame.playerHand);
