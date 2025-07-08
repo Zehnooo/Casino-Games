@@ -46,7 +46,7 @@ function buildBlackjackUI(container, gameState) {
     playerBtns.classList.add("player-btns");
 
     const hitBtn = createButton("hit", "Hit");
-    const standBtn = createButton("stand", "stand");
+    const standBtn = createButton("stand", "Stand");
 
     playerArea.prepend(playerTag);
     dealerArea.prepend(dealerTag);
