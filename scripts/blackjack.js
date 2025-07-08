@@ -18,10 +18,14 @@ function buildBlackjackUI(container, gameState) {
     dealerTag.textContent = "Dealer";
     dealerHand.classList.add("hand");
 
-    gameState.dealerHand.forEach(card => {
+    for (let i = 0; i < gameState.dealerHand.length; i++) {
+        const card = gameState.dealerHand[i];
         const cardImg = createCardElement(card);
+        if (i > 0) {
+            cardImg.classList.add("flipped");
+        }
         dealerHand.appendChild(cardImg);
-    });
+    }
 
 
     const playerArea = document.createElement("div");
@@ -31,10 +35,12 @@ function buildBlackjackUI(container, gameState) {
     const playerTag = document.createElement("h3");
     playerTag.textContent = "Player";
     playerHand.classList.add("hand");
-    gameState.playerHand.forEach(card => {
+
+    for (let i = 0; i < gameState.playerHand.length; i++) {
+        const card = gameState.playerHand[i];
         const cardImg = createCardElement(card);
         playerHand.appendChild(cardImg);
-    });
+    }
 
     const playerBtns = document.createElement("div");
     playerBtns.classList.add("player-btns");
