@@ -13,7 +13,7 @@ function createCardElement(card) {
     const img = document.createElement("img");
     img.src = card.image;
     img.alt = `${card.value} of ${card.suit}`;
-    img.classList.add("card"); // style with CSS as needed
+    img.classList.add("card");
     return img;
 }
 
