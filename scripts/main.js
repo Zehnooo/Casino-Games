@@ -1,3 +1,5 @@
+import { startGame } from "./utils/helpers.js";
+
 function createPlayNow() {
   const gameSelection = document.querySelector(".select-game");
   const games = gameSelection.querySelectorAll(".game");
@@ -48,4 +50,4 @@ function setGame(game) {
 
 createPlayNow();
 
-import { startGame } from "./utils/helpers.js";
+
