@@ -68,4 +68,10 @@ function dealGame(game, deck) {
   }
 }
 
-export { createDeck, dealGame };
+function drawCard(deck) {
+  const newCard = deck.pop();
+  playerHand.push(newCard);
+  return { playerHand, deck };
+}
+
+export { createDeck, dealGame, drawCard };

@@ -1,4 +1,5 @@
 import { createButton, createCardElement } from "./utils/domHelpers.js";
+import { drawCard } from "./utils/deck.js";
 
 function buildBlackjackUI(container, gameState) {
   const header = document.createElement("h2");
