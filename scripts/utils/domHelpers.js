@@ -8,4 +8,13 @@ function createButton(id, text) {
     return btn;
 }
 
-export { createButton }
+
+function createCardElement(card) {
+    const img = document.createElement("img");
+    img.src = card.image;
+    img.alt = `${card.value} of ${card.suit}`;
+    img.classList.add("card"); // style with CSS as needed
+    return img;
+}
+
+export { createButton, createCardElement };

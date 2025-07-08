@@ -148,10 +148,27 @@ body {
 
 #display-game {
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
   margin: 50px auto;
   height: 800px;
   width: 1200px;
+}
+
+.card {
+  width: 75px;
+  height: 125px;
+  margin: 10px auto;
+}
+
+.hand {
+  display: flex;
+  gap: 20px;
+  margin: 10px auto;
+}
+
+.hidden {
+  opacity: 0;
 }
