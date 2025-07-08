@@ -1,7 +1,6 @@
 import { buildBlackjackUI } from "../blackjack.js";
 import { createDeck, dealGame } from "./deck.js";
-const gameDisplay = document.querySelector("#display-game");
-gameDisplay.innerHTML = ``;
+
 /*
 Generic helper functions
 get random number
@@ -11,6 +10,8 @@ etc
 */
 
 function startGame(game) {
+  const gameDisplay = document.querySelector("#display-game");
+  gameDisplay.innerHTML = ``;
   if (game === "startBlackJack") {
     game = "blackjack";
     const deck = createDeck();
@@ -22,6 +23,7 @@ function startGame(game) {
   } else {
     console.log("HERRO");
   }
+
 }
 
 function formatHand(hand) {
