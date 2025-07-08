@@ -1,14 +1,6 @@
 import { buildBlackjackUI } from "../blackjack.js";
 import { createDeck, dealGame } from "./deck.js";
 
-/*
-Generic helper functions
-get random number
-play sound files
-format currency
-etc
-*/
-
 function startGame(game) {
   const gameDisplay = document.querySelector("#display-game");
   gameDisplay.innerHTML = ``;
