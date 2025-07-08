@@ -23,11 +23,6 @@ function startGame(game) {
   } else {
     console.log("HERRO");
   }
-
 }
 
-function formatHand(hand) {
-  return hand.map(card => `${card.value} of ${card.suit}`).join(", ");
-}
-
-export { startGame, formatHand };
+export { startGame };
