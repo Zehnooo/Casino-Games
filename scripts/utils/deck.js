@@ -68,10 +68,12 @@ function dealGame(game, deck) {
   }
 }
 
-function drawCard(deck) {
-  const newCard = deck.pop();
-  playerHand.push(newCard);
-  return { playerHand, deck };
+function drawCard(gameState, targetHand) {
+  const newCard = gameState.deck.pop();
+  gameState[targetHand].push(newCard);
+  console.log(`${targetHand} drew:`, newCard);
+  console.log(`${targetHand} hand:`, gameState[targetHand]);
+  return gameState;
 }
 
 export { createDeck, dealGame, drawCard };
