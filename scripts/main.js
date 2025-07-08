@@ -44,10 +44,7 @@ function setGame(game) {
     console.log(startGameBtn.id);
     const game = startGameBtn.id;
     startGame(game);
-
   });
 }
 
 createPlayNow();
-
-
