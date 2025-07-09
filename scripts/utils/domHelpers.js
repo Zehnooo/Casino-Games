@@ -16,4 +16,23 @@ function createCardElement(card) {
   return img;
 }
 
-export { createButton, createCardElement };
+function gameOver(game) {
+  const gameDisplay = document.querySelector("#display-game");
+  gameDisplay.innerHTML = "";
+
+  const header = document.createElement("h2");
+  header.textContent = game.id;
+
+  const div = document.createElement("div");
+
+  const gameOver = document.createElement("p");
+  gameOver.textContent = "GAME OVER";
+
+  const playAgain = document.createElement("button");
+  playAgain.textContent = "PLAY AGAIN?";
+  playAgain.addEventListener("click", (game) => {
+    setGame(game.id);
+  });
+}
+
+export { createButton, createCardElement, gameOver };
