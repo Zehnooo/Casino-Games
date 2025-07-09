@@ -24,10 +24,6 @@ function buildBlackjackUI(container, gameState) {
     }
     dealerHand.appendChild(cardImg);
   }
-  let dealerHandValue = gameState.dealerHand.reduce((total, card) => {
-    return total + getBlackJackValue(card);
-  }, 0);
-  console.log(dealerHandValue);
   dealerTag.textContent = "Dealer";
 
   const playerArea = document.createElement("div");
@@ -43,24 +39,13 @@ function buildBlackjackUI(container, gameState) {
     const cardImg = createCardElement(card);
     playerHand.appendChild(cardImg);
   }
-  let playerHandValue = gameState.playerHand.reduce((total, card) => {
-    return total + getBlackJackValue(card);
-  }, 0);
-  console.log(playerHandValue);
-  playerTag.textContent = "Player (" + playerHandValue + ")";
 
   const playerBtns = document.createElement("div");
   playerBtns.classList.add("player-btns");
 
   const hitBtn = createButton("hit", "Hit");
   hitBtn.addEventListener("click", () => {
-    drawCard(gameState, "playerHand");
-    const newCard = gameState.playerHand[gameState.playerHand.length - 1];
-    const cardImg = createCardElement(newCard);
-    playerHand.appendChild(cardImg);
-    playerHandValue += getBlackJackValue(newCard);
-    playerTag.textContent = "Player (" + playerHandValue + ")";
-    console.log(playerHandValue);
+    playerHit(gameState, playerTag, playerHand);
   });
 
   const standBtn = createButton("stand", "Stand");
@@ -87,6 +72,36 @@ function getBlackJackValue(card) {
   } else {
     return parseInt(card.value);
   }
+}
+
+function calculateBlackjackHandValue(hand) {
+  let total = 0;
+  let aceCount = 0;
+
+  for (const card of hand) {
+    const value = getBlackJackValue(card);
+    total += value;
+    if (card.value === "Ace") aceCount++;
+  }
+
+  while (total > 21 && aceCount > 0) {
+    total -= 10;
+    aceCount--;
+  }
+
+  return total;
+}
+
+function playerHit(gameState, playerTag, playerHand) {
+  drawCard(gameState, "playerHand");
+  const newCard = gameState.playerHand[gameState.playerHand.length - 1];
+  const cardImg = createCardElement(newCard);
+  playerHand.appendChild(cardImg);
+  const handValue = calculateBlackjackHandValue(gameState.playerHand);
+  if (handValue > 21) {
+    alert("Player BUSTED EVERYWHERE", handValue);
+  }
+  playerTag.textContent = `Player (${handValue})`;
 }
 
 export { buildBlackjackUI };
