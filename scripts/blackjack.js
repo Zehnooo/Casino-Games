@@ -13,7 +13,7 @@ function buildBlackjackUI(container, gameState) {
 
   const dealerHand = document.createElement("div");
   const dealerTag = document.createElement("h3");
-  dealerTag.textContent = "Dealer";
+
   dealerHand.classList.add("hand");
 
   for (let i = 0; i < gameState.dealerHand.length; i++) {
@@ -24,17 +24,18 @@ function buildBlackjackUI(container, gameState) {
     }
     dealerHand.appendChild(cardImg);
   }
+  dealerTag.textContent = "Dealer";
 
   const playerArea = document.createElement("div");
   playerArea.id = "player-area";
 
   const playerHand = document.createElement("div");
   const playerTag = document.createElement("h3");
-  playerTag.textContent = "Player";
   playerHand.classList.add("hand");
 
   for (let i = 0; i < gameState.playerHand.length; i++) {
     const card = gameState.playerHand[i];
+    console.log(gameState.playerHand[i].value);
     const cardImg = createCardElement(card);
     playerHand.appendChild(cardImg);
   }
@@ -44,15 +45,14 @@ function buildBlackjackUI(container, gameState) {
 
   const hitBtn = createButton("hit", "Hit");
   hitBtn.addEventListener("click", () => {
-    drawCard(gameState, "playerHand");
-    const newCard = gameState.playerHand[gameState.playerHand.length - 1];
-    const cardImg = createCardElement(newCard);
-    playerHand.appendChild(cardImg);
+    playerHit(gameState, playerTag, playerHand);
   });
+
   const standBtn = createButton("stand", "Stand");
   standBtn.addEventListener("click", () => {
     const faceDownCard = dealerHand.querySelector(".flipped");
     faceDownCard.classList.remove("flipped");
+    dealerTag.textContent = "Dealer (" + dealerHandValue + ")";
   });
 
   playerArea.prepend(playerTag);
@@ -62,6 +62,46 @@ function buildBlackjackUI(container, gameState) {
   playerArea.append(playerHand, playerBtns);
   gameArea.append(dealerArea, playerArea);
   container.append(header, gameArea);
+}
+
+function getBlackJackValue(card) {
+  if (["Jack", "Queen", "King"].includes(card.value)) {
+    return 10;
+  } else if (card.value === "Ace") {
+    return 11;
+  } else {
+    return parseInt(card.value);
+  }
+}
+
+function calculateBlackjackHandValue(hand) {
+  let total = 0;
+  let aceCount = 0;
+
+  for (const card of hand) {
+    const value = getBlackJackValue(card);
+    total += value;
+    if (card.value === "Ace") aceCount++;
+  }
+
+  while (total > 21 && aceCount > 0) {
+    total -= 10;
+    aceCount--;
+  }
+
+  return total;
+}
+
+function playerHit(gameState, playerTag, playerHand) {
+  drawCard(gameState, "playerHand");
+  const newCard = gameState.playerHand[gameState.playerHand.length - 1];
+  const cardImg = createCardElement(newCard);
+  playerHand.appendChild(cardImg);
+  const handValue = calculateBlackjackHandValue(gameState.playerHand);
+  if (handValue > 21) {
+    alert("Player BUSTED EVERYWHERE", handValue);
+  }
+  playerTag.textContent = `Player (${handValue})`;
 }
 
 export { buildBlackjackUI };
