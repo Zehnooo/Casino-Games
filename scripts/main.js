@@ -47,21 +47,4 @@ function setGame(game) {
   });
 }
 
-function gameOver(game) {
-  const gameDisplay = document.querySelector("#display-game");
-  gameDisplay.innerHTML = "";
-
-  const header = document.createElement("h2");
-  header.textContent = game;
-
-  const div = document.createElement("div");
-
-  const gameOver = document.createElement("p");
-  gameOver.textContent = "GAME OVER";
-
-  const playAgain = document.createElement("button");
-  playAgain.textContent = "PLAY AGAIN?";
-  playAgain.addEventListener("click", () => {});
-}
-
 createPlayNow();
