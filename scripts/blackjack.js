@@ -1,9 +1,13 @@
-import { createButton, createCardElement } from "./utils/domHelpers.js";
+import {
+  createButton,
+  createCardElement,
+  gameOver,
+} from "./utils/domHelpers.js";
 import { drawCard /*, getHandValue */ } from "./utils/deck.js";
 
 function buildBlackjackUI(container, gameState) {
   const header = document.createElement("h2");
-  header.textContent = "Blackjack";
+  header.textContent = "BLACKJACK";
 
   const gameArea = document.createElement("div");
   gameArea.id = "game-area";
@@ -31,6 +35,7 @@ function buildBlackjackUI(container, gameState) {
 
   const playerHand = document.createElement("div");
   const playerTag = document.createElement("h3");
+
   playerHand.classList.add("hand");
 
   for (let i = 0; i < gameState.playerHand.length; i++) {
@@ -100,8 +105,9 @@ function playerHit(gameState, playerTag, playerHand) {
   const handValue = calculateBlackjackHandValue(gameState.playerHand);
   if (handValue > 21) {
     alert("Player BUSTED EVERYWHERE", handValue);
+    gameOver("blackjack");
   }
-  playerTag.textContent = `Player (${handValue})`;
+  playerTag.textContent = "Player (" + handValue + ")";
 }
 
 export { buildBlackjackUI };

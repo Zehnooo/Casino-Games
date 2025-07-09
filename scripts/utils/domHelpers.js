@@ -1,3 +1,4 @@
+import { setGame } from "../main.js";
 /*
 Dom creation, manipulation, removal, etc.
 */
@@ -16,23 +17,25 @@ function createCardElement(card) {
   return img;
 }
 
-function gameOver(game) {
+function gameOver(gameName) {
   const gameDisplay = document.querySelector("#display-game");
   gameDisplay.innerHTML = "";
 
   const header = document.createElement("h2");
-  header.textContent = game.id;
+  header.textContent = gameName.toUpperCase();
 
   const div = document.createElement("div");
 
-  const gameOver = document.createElement("p");
-  gameOver.textContent = "GAME OVER";
+  const gameOverText = document.createElement("p");
+  gameOverText.textContent = "GAME OVER";
 
-  const playAgain = document.createElement("button");
-  playAgain.textContent = "PLAY AGAIN?";
-  playAgain.addEventListener("click", (game) => {
-    setGame(game.id);
+  const playAgain = createButton("play-again", "PLAY AGAIN");
+  playAgain.addEventListener("click", () => {
+    setGame(gameName);
   });
+
+  div.append(gameOverText, playAgain);
+  gameDisplay.append(header, div);
 }
 
 export { createButton, createCardElement, gameOver };

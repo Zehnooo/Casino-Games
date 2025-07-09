@@ -48,3 +48,5 @@ function setGame(game) {
 }
 
 createPlayNow();
+
+export { setGame };
