@@ -205,3 +205,21 @@ body {
   box-shadow: 0 0 #57cc99;
   top: 5px;
 }
+/* plinko styles */
+#game-area {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  border: 2px solid black;
+  background-color: #f8f8f8;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.peg {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 50%;
+}

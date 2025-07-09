@@ -1,5 +1,7 @@
 import { buildBlackjackUI } from "../blackjack.js";
 import { createDeck, dealGame } from "./deck.js";
+import { PlinkoBoundary } from "../plinko.js";
+import { War } from "../war.js";
 
 function startGame(game) {
   const gameDisplay = document.querySelector("#display-game");
@@ -12,9 +14,15 @@ function startGame(game) {
     console.log("blackjack game started", blackJackGame.deck);
     console.log(blackJackGame.playerHand);
     console.log(blackJackGame.dealerHand);
+
+  } else if (game === "startPlinko") {
+    const plinko = PlinkoBoundary(gameDisplay);
+  } else if (game === "startWar") {
+    const war = War(gameDisplay);
   } else {
     console.log("HERRO");
   }
 }
 
 export { startGame };
+
