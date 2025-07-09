@@ -7,10 +7,10 @@ export function PlinkoBoundary(container) {
   gameArea.id = "game-area";
 
   const pegs = [];
-  const ball = { x: 200, y: 0, radius: 6, vx: 0, vy: 0};
+  const ball = { x: 200, y: 0, radius: 6, vx: 0, vy: 0 };
   const gravity = 0.2;
   const pegRadius = 5;
-  
+
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 8; col++) {
       const offset = row % 2 === 0 ? 0 : 25;
