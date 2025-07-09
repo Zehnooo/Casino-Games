@@ -13,7 +13,7 @@ function buildBlackjackUI(container, gameState) {
 
   const dealerHand = document.createElement("div");
   const dealerTag = document.createElement("h3");
-  dealerTag.textContent = "Dealer";
+
   dealerHand.classList.add("hand");
 
   for (let i = 0; i < gameState.dealerHand.length; i++) {
@@ -28,12 +28,13 @@ function buildBlackjackUI(container, gameState) {
     return total + getBlackJackValue(card);
   }, 0);
   console.log(dealerHandValue);
+  dealerTag.textContent = "Dealer";
+
   const playerArea = document.createElement("div");
   playerArea.id = "player-area";
 
   const playerHand = document.createElement("div");
   const playerTag = document.createElement("h3");
-  playerTag.textContent = "Player";
   playerHand.classList.add("hand");
 
   for (let i = 0; i < gameState.playerHand.length; i++) {
@@ -46,6 +47,8 @@ function buildBlackjackUI(container, gameState) {
     return total + getBlackJackValue(card);
   }, 0);
   console.log(playerHandValue);
+  playerTag.textContent = "Player (" + playerHandValue + ")";
+
   const playerBtns = document.createElement("div");
   playerBtns.classList.add("player-btns");
 
@@ -56,6 +59,7 @@ function buildBlackjackUI(container, gameState) {
     const cardImg = createCardElement(newCard);
     playerHand.appendChild(cardImg);
     playerHandValue += getBlackJackValue(newCard);
+    playerTag.textContent = "Player (" + playerHandValue + ")";
     console.log(playerHandValue);
   });
 
@@ -63,6 +67,7 @@ function buildBlackjackUI(container, gameState) {
   standBtn.addEventListener("click", () => {
     const faceDownCard = dealerHand.querySelector(".flipped");
     faceDownCard.classList.remove("flipped");
+    dealerTag.textContent = "Dealer (" + dealerHandValue + ")";
   });
 
   playerArea.prepend(playerTag);
